@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {createRoom, createUser, deleteRoom, deleteUser, refreshRoom, refreshUser} from "../common.js";
+import {createRoom, createUser, deleteRoom, deleteUser, refreshRoom, refreshUser} from "../lib.js";
 
 export default function Debug() {
 
