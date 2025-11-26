@@ -12,6 +12,7 @@ export default function Debug() {
 
     const [newRoomName, setNewRoomName] = useState("")
     const [newRoomMaxUsers, setNewRoomMaxUsers] = useState()
+    const [newRoomPublic, setNewRoomPublic] = useState()
     const [roomCreateResponse, setRoomCreateResponse] = useState("")
 
     const fetchData = async () => {
@@ -39,7 +40,7 @@ export default function Debug() {
     }
     const handleCreateNewRoomSubmit = async (e) => {
         e.preventDefault()
-        setRoomCreateResponse(createRoom(newRoomName, newRoomMaxUsers))
+        setRoomCreateResponse(createRoom(newRoomName, newRoomMaxUsers, newRoomPublic))
         fetchData().then(({ users, rooms }) => {
             setUserData(users)
             setRoomData(rooms)
@@ -69,6 +70,7 @@ export default function Debug() {
             {userData.map(user => (
                 <div key={user.id}>
                     <p>{user.username}@{user.domain}</p>
+                    <p>ID = {user.id}</p>
                     <input type="button" onClick={() => handleDeleteUser(user.id)} value="delete"/>
                 </div>
             ))}
@@ -85,6 +87,7 @@ export default function Debug() {
             {roomData.map(room => (
                 <div key={room.id}>
                     <p>{room.name}</p>
+                    <p>ID = {room.id}</p>
                     <p>Public = {room.is_public? "true" : "false"}</p>
                     <p>Max Users = {room.max_users}</p>
                     <p>Owned by = {room.room_root}</p>
@@ -98,6 +101,8 @@ export default function Debug() {
                 <input type="text" onChange={e => setNewRoomName(e.target.value)} value={newRoomName} required="true"/>
                 <p>Max Users</p>
                 <input type="number" onChange={e => setNewRoomMaxUsers(parseInt(e.target.value))} value={newRoomMaxUsers} />
+                <p>Public:</p>
+                <input type="checkbox" onChange={e => setNewRoomPublic(Boolean(e.target.value))} value={newRoomPublic}/>
                 <input type="submit"/>
             </form>
             <p>{roomCreateResponse}</p>
