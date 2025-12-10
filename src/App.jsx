@@ -1,13 +1,18 @@
 import {BrowserRouter, Route, Routes, useParams} from "react-router";
-import Home from "./components/Home.jsx";
+import RedirectionComponent from "./components/RedirectionComponent.jsx";
 import Room from "./components/Room.jsx";
-import Login from "./components/Login.jsx";
-import Register from "./components/Register.jsx";
+import LoginComponent from "./components/LoginComponent.jsx";
+import RegisterComponent from "./components/RegisterComponent.jsx";
+import HomeComponent from "./components/HomeComponent.jsx";
 
 function App() {
 
+    function Redirection() {
+        return(<RedirectionComponent/>)
+    }
+
     function HomePage() {
-        return(<Home/>)
+        return(<HomeComponent/>)
     }
 
     function RoomPage() {
@@ -16,10 +21,10 @@ function App() {
     }
 
     function LoginPage() {
-        return(<Login/>)
+        return(<LoginComponent/>)
     }
     function RegisterPage() {
-        return(<Register/>)
+        return(<RegisterComponent/>)
     }
 
   return (
@@ -28,10 +33,11 @@ function App() {
             <Routes>
                 {/* eslint-disable-next-line react-hooks/static-components */}
                 {/* eslint-disable-next-line react-hooks/static-components */}
-                <Route path="/" element={<HomePage/>}/>
+                <Route path="/" element={<Redirection/>}/>
                 <Route path="/login" element={<LoginPage/>}/>
                 <Route path="/register" element={<RegisterPage/>}/>
                 <Route path="/room/:id" element={<RoomPage/>}/>
+                <Route path="/home" element={<HomePage/>}/>
             </Routes>
         </BrowserRouter>
     </>
