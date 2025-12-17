@@ -53,8 +53,12 @@ export default function HomeComponent() {
                 <h1>Home</h1>
                 <p>Hello {userData.username}</p>
                 <h2>Rooms</h2>
+                <a href="/create">Create Room</a>
                 {roomData.map((room)=>(
-                    <h3>{room.name}</h3>
+                    <div>
+                        <h3>{room.name}</h3>
+                        <a href={"/room/"+room.id}>Go to Room</a>
+                    </div>
                 ))}
                 <input type="button" value="logout" onClick={logoutWrapper}/>
             </>

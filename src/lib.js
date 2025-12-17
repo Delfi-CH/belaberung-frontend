@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 //Config
-export let backendURL = "http://localhost:8080"
+export let backendURL = "http://10.95.214.20:8080"
 
 export function setBackendURL(newUrl) {
     backendURL = newUrl
@@ -105,6 +105,20 @@ export async function getUserByName(username) {
     }
 }
 
+export async function getUserById(id) {
+    const token = getToken()
+    if (!token) return null
+    try {
+        const response = await axios.get(backendURL+"/api/chat/user/id/"+id, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return response.data
+    } catch {
+        return null
+    }
+}
 export async function fetchRooms() {
     const token = getToken()
     if (!token) return null
@@ -120,15 +134,14 @@ export async function fetchRooms() {
     }
 }
 
-export async function createRoom(name, isPublic, directMessage, maxUsers) {
+export async function createRoom(name, maxUsers) {
     const token = getToken()
     if (!token) return null
     try {
-        const ownerUID = getUserByName(getUsername()).id
-        await axios.post(backendURL+"/api/chat/rooms",{
+        const owner = await getUserByName(getUsername())
+        const ownerUID = owner.id
+        await axios.post(backendURL+"/api/chat/rooms/create",{
             "name": name,
-            "is_public": isPublic,
-            "is_directmessage": directMessage,
             "max_users": maxUsers,
             "owner_user_id": ownerUID
         }, {
@@ -137,6 +150,65 @@ export async function createRoom(name, isPublic, directMessage, maxUsers) {
             }
         })
         return null
+    } catch {
+        return null
+    }
+}
+
+export async function getRoomByID(id) {
+    const token = getToken()
+    if (!token) return null
+    try {
+        const response = await axios.get(backendURL+"/api/chat/rooms/id/"+id, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return response.data
+    } catch {
+        return null
+    }
+}
+
+export async function addUserToRoom(username, roomId) {
+    const token = getToken()
+    if (!token) return null
+    try {
+        await axios.post(backendURL+"/api/chat/rooms/"+roomId+"/invite",{username}, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+    } catch {
+        return null
+    }
+}
+
+export async function sendMessage(content, roomId) {
+    const token = getToken()
+    if (!token) return null
+    try {
+        const username = getUsername()
+        await axios.post(backendURL+"/api/chat/rooms/"+roomId+"/send",{content, username}, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+    } catch {
+        return null
+    }
+}
+
+export async function getMessages(id) {
+    const token = getToken()
+    if (!token) return null
+    try {
+        const response = await axios.get(backendURL+"/api/chat/rooms/"+id+"/messages", {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return response.data
     } catch {
         return null
     }

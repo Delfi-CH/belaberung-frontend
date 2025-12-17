@@ -4,6 +4,7 @@ import Room from "./components/Room.jsx";
 import LoginComponent from "./components/LoginComponent.jsx";
 import RegisterComponent from "./components/RegisterComponent.jsx";
 import HomeComponent from "./components/HomeComponent.jsx";
+import CreateRoomComponent from "./components/CreateRoomComponent.jsx";
 
 function App() {
 
@@ -26,6 +27,9 @@ function App() {
     function RegisterPage() {
         return(<RegisterComponent/>)
     }
+    function CreateRoomPage() {
+        return(<CreateRoomComponent/>)
+    }
 
   return (
     <>
@@ -38,6 +42,7 @@ function App() {
                 <Route path="/register" element={<RegisterPage/>}/>
                 <Route path="/room/:id" element={<RoomPage/>}/>
                 <Route path="/home" element={<HomePage/>}/>
+                <Route path="/create" element={<CreateRoomPage/>}/>
             </Routes>
         </BrowserRouter>
     </>
