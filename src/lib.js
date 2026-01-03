@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 //Config
-export let backendURL = "http://10.95.214.20:8080"
+export let backendURL = "http://localhost:8080"
 
 export function setBackendURL(newUrl) {
     backendURL = newUrl
@@ -134,7 +134,7 @@ export async function fetchRooms() {
     }
 }
 
-export async function createRoom(name, maxUsers) {
+export async function createRoom(name) {
     const token = getToken()
     if (!token) return null
     try {
@@ -142,7 +142,6 @@ export async function createRoom(name, maxUsers) {
         const ownerUID = owner.id
         await axios.post(backendURL+"/api/chat/rooms/create",{
             "name": name,
-            "max_users": maxUsers,
             "owner_user_id": ownerUID
         }, {
             headers: {

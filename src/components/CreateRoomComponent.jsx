@@ -5,8 +5,6 @@ export default function CreateRoomComponent() {
     const [isLoggedIn, setIsLoggedIn] = useState(null)
 
     const [roomName, setRoomName] = useState("")
-    const [maxUsers, setMaxUsers] = useState(10)
-
     useEffect(() => {
         let mounted = true
 
@@ -27,9 +25,7 @@ export default function CreateRoomComponent() {
                 <h1>Create Room</h1>
                 <p>Name</p>
                 <input type="text" value={roomName} onChange={(e)=>setRoomName(e.target.value)}/>
-                <p>Max. Users</p>
-                <input type="number" value={maxUsers} onChange={(e)=>setMaxUsers(Number(e.target.value))}/>
-                <input type="button" value="create" onClick={()=>createRoom(roomName, maxUsers)}/>
+                <input type="button" value="create" onClick={()=>createRoom(roomName)}/>
             </>
         )}
 }
