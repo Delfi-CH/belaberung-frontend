@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import {checkStatus, register} from "../lib.js";
-import {Navigate} from "react-router";
+import {Link, Navigate} from "react-router";
+import message_icon from "../assets/extern/feathericons/message.svg";
+import "../style/auth.css"
 
 export default function RegisterComponent() {
 
@@ -39,15 +41,23 @@ export default function RegisterComponent() {
 
     if (!isLoggedIn) {
     return(
-        <>
-            <h1>Register</h1>
-            <span>Username</span>
-            <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)}/>
-            <span>Password</span>
-            <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-            <input type="button" value="register" onClick={()=>registerWrapper()}/>
-            <h2>Already have an account? <a href="/login">Sign in here</a> </h2>
-        </>
+        <div className="auth">
+            <h1>
+                <Link to="/home">
+                    <img src={message_icon} alt="Message Bubble" width={48}/>
+                </Link>
+                Register
+            </h1>
+            <form action={()=>registerWrapper()} className="auth_form">
+                <span>Username</span>
+                <input type="username" value={username} onChange={(e)=>setUsername(e.target.value)} className="auth_form_text"/>
+                <span>Password</span>
+                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="auth_form_text"/>
+                <input type="submit" value="Register" className="auth_form_button"/>
+                <h3>Already have an account? <Link to="/login">Sign in here</Link> </h3>
+            </form>
+
+        </div>
     )} else {
         return (<Navigate to="/home"/>)
     }

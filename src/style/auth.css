@@ -1,0 +1,52 @@
+.auth_form {
+    border: 5px solid black;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5em;
+    margin: 1em;
+    padding: 0.5rem;
+    background: black;
+    color: white;
+}
+
+.auth_form a {
+    color: dodgerblue;
+}
+
+.auth_form_text {
+    all: unset;
+    border: 3px solid white;
+    min-height: 2em;
+}
+.auth_form_text:focus {
+    border: 3px solid dodgerblue;
+    outline: none;
+}
+
+.auth_form_button {
+    all:unset;
+    border: 5px solid white;
+    border-radius: 1em;
+    max-width: 55%;
+    cursor: pointer;
+    margin-left: 22.5%;
+    padding: 0.3rem;
+    background: white;
+    color: black;
+}
+
+.auth_form_button:hover {
+    background: lightgrey;
+}
+
+.auth {
+    width: 100%;
+}
+
+@media (min-width: 599px) {
+    .auth {
+        width: 40%;
+    }
+}
