@@ -1,0 +1,144 @@
+.room {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+}
+
+.users {
+    flex: 1;
+    height: 10%;
+    overflow: scroll;
+    border: 3px solid black;
+    margin: 1em;
+    max-height: 10vh;
+}
+
+.message_core {
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+}
+
+.messages {
+    flex: 1;
+    max-height: 80%;
+    overflow-y: auto;
+    overflow-x: visible;
+    border: 3px solid black;
+    margin: 1em;
+    padding: 1em;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+.hide_on_desktop {
+
+}
+.header {
+    text-align: right;
+    margin: 1em;
+}
+
+.send_message {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    flex-direction: row;
+    text-align: center;
+    margin: 0.1em 1em 1em;
+    max-height: 8vh;
+}
+.send_message_text {
+    border: 3px solid black;
+    width: 85%;
+    max-height: 7.7vh;
+    border-right: none;
+    font-size: 200%;
+}
+.send_message_text:focus {
+    border: 3px solid blue;
+    outline: none;
+}
+.send_message_button {
+    all: unset;
+    width: 7.4vh;
+    border: 3px solid black;
+    background: gray;
+    height: 7.4vh;
+    cursor: pointer;
+}
+.send_message_button:hover {
+    background: lightgrey;
+}
+.send_message_icon  {
+    width: 40%;
+    height: 40%;
+    transform: rotate(180deg);
+    margin-top: 0.1rem;
+}
+
+.mininav_container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 1em;
+}
+.mininav_item {
+    flex: 1;
+    all: unset;
+    align-self: flex-end;
+    border: 5px solid black;
+    border-radius: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    cursor: pointer;
+    color: white;
+    background: black;
+}
+.mininav_item:hover {
+    background: gray;
+}
+
+@media (min-width: 599px)  {
+    .header {
+        text-align: left;
+        margin: 1em 1em 1em 2em;
+    }
+    .room {
+        margin: 1em;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .users {
+        max-width: 20%;
+        height: 77.7vh;
+        max-height: 80vh;
+    }
+    .message_core {
+        width: 75%;
+        max-height: 80vh;
+    }
+    .messages {
+        max-height: 100%;
+    }
+    .send_message_text {
+        width: 100%;
+        font-size: 230%;
+        height: 2.12em;
+        max-height: 5.8em;
+    }
+    .send_message_button {
+        height: 5em;
+        width: 5em;
+    }
+    .hide_on_desktop {
+        display: none;
+    }
+    .mininav_container {
+        justify-content: flex-start;
+    }
+}
+
+@media print {
+    display: none;
+}

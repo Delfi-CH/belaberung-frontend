@@ -1,0 +1,50 @@
+.user {
+    font-size: 100%;
+    font-weight: bolder;
+}
+.username_addon {
+    font-style: italic;
+    font-weight: normal;
+}
+.sent_at {
+    font-size: 70%;
+    display: none;
+}
+.timestamp_desktop {
+    font-size: 70%;
+    display: none;
+}
+.timestamp_mobile {
+    font-size: 70%;
+}
+.content {
+    margin-left: 1em;
+}
+.user_profile {
+    border: 5px solid black;
+    border-bottom-right-radius: 1rem;
+    padding: 0.2rem;
+    color: white;
+    background: black;
+    width: fit-content;
+}
+
+.main {
+    border: 5px solid black;
+    border-radius: 1em;
+    margin: 0.5em;
+    width: fit-content;
+    padding-right: 1em;
+}
+@media (min-width: 599px) {
+    .timestamp_desktop {
+        display: inline;
+    }
+    .timestamp_mobile {
+        display: none;
+    }
+    .sent_at {
+        display: inline;
+    }
+}
+
