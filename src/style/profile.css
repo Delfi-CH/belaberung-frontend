@@ -1,0 +1,83 @@
+.update_password  {
+    border: 5px solid black;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5em;
+    margin: 1em;
+    padding: 0.5rem;
+    background: black;
+    color: white;
+}
+
+.update_password p {
+    font-size: 150%;
+    margin: -0.1em;
+    font-weight: bold;
+
+}
+.update_password_text {
+    all: unset;
+    border: 3px solid white;
+    min-height: 2em;
+
+}
+
+.update_password_text:focus {
+    border: 3px solid dodgerblue;
+    outline: none;
+}
+
+.button_form {
+    all:unset;
+    border: 5px solid white;
+    border-radius: 1em;
+    max-width: 55%;
+    cursor: pointer;
+    margin-left: 22.5%;
+    padding: 0.3rem;
+    background: white;
+    color: black;
+}
+
+.button {
+    all:unset;
+    border: 5px solid black;
+    border-radius: 1em;
+    width: 50%;
+    cursor: pointer;
+    padding: 0.3rem;
+    background: black;
+    color: white;
+    text-align: center;
+    margin-left: 25%;
+    margin-bottom: 1em;
+}
+
+.button_form:hover {
+    background: lightgrey;
+}
+.button:hover {
+    background: gray;
+}
+.mininav_item {
+    all: unset;
+    align-self: flex-end;
+    border: 5px solid black;
+    border-radius: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    cursor: pointer;
+    color: white;
+    background: black;
+}
+.profile {
+    width: 100%;
+}
+
+@media (min-width: 599px) {
+    .profile {
+        width: 40%;
+    }
+}

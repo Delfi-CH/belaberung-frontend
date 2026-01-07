@@ -212,3 +212,33 @@ export async function getMessages(id) {
         return null
     }
 }
+
+export async function deleteUser(id) {
+    const token = getToken()
+    if (!token) return null
+    try {
+        await axios.delete(backendURL+"/api/chat/user/"+id, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }})
+    } catch {
+        return null
+    }
+}
+
+export async function updatePassword(id, oldPassword, newPassword){
+    const token = getToken()
+    if (!token) return null
+    try {
+        await axios.put(backendURL+"/api/chat/user/"+id+"/password",{
+            "old_password": oldPassword,
+            "new_password": newPassword
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+    } catch {
+        return null
+    }
+}

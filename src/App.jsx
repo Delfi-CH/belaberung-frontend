@@ -5,6 +5,7 @@ import LoginComponent from "./components/LoginComponent.jsx";
 import RegisterComponent from "./components/RegisterComponent.jsx";
 import HomeComponent from "./components/HomeComponent.jsx";
 import CreateRoomComponent from "./components/CreateRoomComponent.jsx";
+import ProfileComponent from "./components/ProfileComponent.jsx";
 
 function App() {
 
@@ -30,6 +31,9 @@ function App() {
     function CreateRoomPage() {
         return(<CreateRoomComponent/>)
     }
+    function ProfilePage() {
+        return(<ProfileComponent/>)
+    }
 
   return (
     <>
@@ -43,6 +47,7 @@ function App() {
                 <Route path="/room/:id" element={<RoomPage/>}/>
                 <Route path="/home" element={<HomePage/>}/>
                 <Route path="/create" element={<CreateRoomPage/>}/>
+                <Route path="/profile" element={<ProfilePage/>}/>
             </Routes>
         </BrowserRouter>
     </>

@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {checkStatus, fetchRooms, getUserByName, getUsername, logout} from "../lib.js";
-import {Navigate} from "react-router";
+import {Link, Navigate} from "react-router";
+import message_icon from "../assets/extern/feathericons/message.svg";
 
 export default function HomeComponent() {
 
@@ -50,10 +51,16 @@ export default function HomeComponent() {
     if (isLoggedIn) {
         return(
             <>
-                <h1>Home</h1>
+                <h1>
+                    <Link to="/home">
+                        <img src={message_icon} alt="Message Bubble" width={48}/>
+                    </Link>
+                    Home
+                </h1>
                 <p>Hello {userData.username}</p>
                 <h2>Rooms</h2>
-                <a href="/create">Create Room</a>
+                <Link to="/create"><p>Create Room</p></Link>
+                <Link to="/profile"><p>Your Profile</p></Link>
                 {roomData.map((room)=>(
                     <div>
                         <h3>{room.name}</h3>
