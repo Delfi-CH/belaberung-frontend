@@ -59,6 +59,8 @@ export default function Room({roomId}) {
     }
 
     if (isLoggedIn === null) return null
+    if (!isLoggedIn) return (<Navigate to="/login"/>)
+
     if (!roomData) return (
         <WaitingComponent/>
     )
@@ -102,7 +104,5 @@ export default function Room({roomId}) {
                 </div>
             </div>
         )
-    } else {
-        return (<Navigate to="/login"/>)
     }
 }

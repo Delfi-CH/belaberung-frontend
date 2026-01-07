@@ -1,0 +1,47 @@
+.create_form {
+    border: 5px solid black;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5em;
+    margin: 1em;
+    padding: 0.5rem;
+    background: black;
+    color: white;
+}
+
+.create_form_text {
+    all: unset;
+    border: 3px solid white;
+    min-height: 2em;
+}
+.create_form_text:focus {
+    border: 3px solid dodgerblue;
+    outline: none;
+}
+.create_form_buttom {
+    all:unset;
+    border: 5px solid white;
+    border-radius: 1em;
+    max-width: 55%;
+    cursor: pointer;
+    margin-left: 22.5%;
+    padding: 0.3rem;
+    background: white;
+    color: black;
+}
+.create_form_buttom:hover {
+    background: lightgrey;
+
+}
+
+.create {
+    width: 100%;
+}
+
+@media (min-width: 599px) {
+    .create {
+        width: 40%;
+    }
+}

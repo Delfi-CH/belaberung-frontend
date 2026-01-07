@@ -64,6 +64,7 @@ export default function ProfileComponent() {
     }
     const updatePasswdWrapper = () => {
         updatePassword(userData.id, oldPassword,newPassword)
+        logoutWrapper()
     }
 
     if (isLoggedIn === null) return null

@@ -53,7 +53,7 @@ export default function LoginComponent() {
                 <input type="username" value={username} onChange={(e)=>setUsername(e.target.value)} className="auth_form_text"/>
                 <span>Password</span>
                 <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="auth_form_text"/>
-                <input type="button" value="Login" className="auth_form_button" />
+                <input type="submit" value="Login" className="auth_form_button" />
                 <h3>Dont have an account? <Link to="/register">Register here</Link> </h3>
             </form>
 

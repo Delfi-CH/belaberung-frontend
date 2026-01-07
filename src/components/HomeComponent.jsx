@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {checkStatus, fetchRooms, getUserByName, getUsername, logout} from "../lib.js";
 import {Link, Navigate} from "react-router";
 import message_icon from "../assets/extern/feathericons/message.svg";
+import "../style/home.css"
 
 export default function HomeComponent() {
 
@@ -57,17 +58,21 @@ export default function HomeComponent() {
                     </Link>
                     Home
                 </h1>
-                <p>Hello {userData.username}</p>
+                <p className="hello">Hello, <span className="username">{userData.username}</span></p>
                 <h2>Rooms</h2>
-                <Link to="/create"><p>Create Room</p></Link>
-                <Link to="/profile"><p>Your Profile</p></Link>
+                <div className="rooms">
                 {roomData.map((room)=>(
-                    <div>
+                    <div className="singular_room" key={room.id}>
                         <h3>{room.name}</h3>
-                        <a href={"/room/"+room.id}>Go to Room</a>
+                        <span><Link to={"/room/"+room.id}>Go to Room</Link></span>
                     </div>
                 ))}
-                <input type="button" value="logout" onClick={logoutWrapper}/>
+                </div>
+                <div className="logout_button_container">
+                    <Link to="/create" className="logout_button"><span>Create Room</span></Link>
+                    <Link to="/profile" className="logout_button"><span>Your Profile</span></Link>
+                    <input type="button" value="Logout" onClick={logoutWrapper} className="logout_button"/>
+                </div>
             </>
         )
     } else {
