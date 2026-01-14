@@ -1,16 +1,27 @@
-# React + Vite
+# belaberung-frontend
+A minimal chat / forum application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The name "belaberung" comes from the german word "labern", which means to talk unnecessarily lengthily, see
+[https://en.wiktionary.org/wiki/labern](https://en.wiktionary.org/wiki/labern) for more info.
 
-Currently, two official plugins are available:
+## Frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The frontend for belaberung is written in ReactJS
 
-## React Compiler
+### Run 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash 
+git clone https://github.com/Delfi-CH/belaberung-frontend.git
+cd belaberung-frontend
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+### Build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash 
+git clone https://github.com/Delfi-CH/belaberung-frontend.git
+cd belaberung-frontend
+npm install
+npm run build
+```
