@@ -8,7 +8,15 @@ The name "belaberung" comes from the german word "labern", which means to talk u
 
 The frontend for belaberung is written in ReactJS
 
-### Run 
+## Usage
+
+### Docker
+
+See [github.com/Delfi-CH/belaberung-docker](https://github.com/Delfi-CH/belaberung-docker) on how to run this in docker.
+
+### Manually
+
+#### Run 
 
 ```bash 
 git clone https://github.com/Delfi-CH/belaberung-frontend.git
@@ -17,7 +25,7 @@ npm install
 npm run dev
 ```
 
-### Build
+#### Build
 
 ```bash 
 git clone https://github.com/Delfi-CH/belaberung-frontend.git
