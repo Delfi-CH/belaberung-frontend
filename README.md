@@ -14,7 +14,7 @@ The frontend for belaberung is written in ReactJS
 git clone https://github.com/Delfi-CH/belaberung-frontend.git
 cd belaberung-frontend
 npm install
-VITE_BACKEND_URL=http://example.com/ npm run dev
+npm run dev
 ```
 
 ### Build
@@ -23,5 +23,5 @@ VITE_BACKEND_URL=http://example.com/ npm run dev
 git clone https://github.com/Delfi-CH/belaberung-frontend.git
 cd belaberung-frontend
 npm install
-VITE_BACKEND_URL=http://example.com/ npm run build
+npm run build
 ```

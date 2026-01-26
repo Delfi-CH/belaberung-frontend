@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 //Config
-export let backendURL = import.meta.env.VITE_BACKEND_URL
+export let backendURL = ""
 
 export function setBackendURL(newUrl) {
     backendURL = newUrl
