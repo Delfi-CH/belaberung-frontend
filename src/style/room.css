@@ -142,12 +142,12 @@ h1 {
     .send_message_text {
         width: 100%;
         font-size: 230%;
-        height: 2.12em;
-        max-height: 5.8em;
+        height: 4.55rem;
+        max-height: 5rem;
     }
     .send_message_button {
-        height: 5em;
-        width: 5em;
+        height: 5rem;
+        width: 5rem;
     }
     .hide_on_desktop {
         display: none;
