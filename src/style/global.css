@@ -14,3 +14,8 @@
     margin: 5px;
     padding: 5px;
 }
+
+a {
+    font-weight: bold;
+    color: var(--primary-color);
+}

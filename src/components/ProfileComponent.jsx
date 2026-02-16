@@ -5,7 +5,13 @@ import {Link, Navigate} from "react-router";
 import WaitingComponent from "./WaitingComponent.jsx";
 import message_icon from "../assets/extern/feathericons/message.svg";
 import "../style/profile.css"
-import {AvailableColours, CurrentColours, setCurrentColour, updateColors} from "../style/colors.js";
+import {
+    AvailableColours,
+    CurrentColours,
+    getCurrentColourName,
+    setCurrentColour, setCurrentColourName,
+    updateColors
+} from "../style/colors.js";
 
 export default function ProfileComponent() {
     const [isLoggedIn, setIsLoggedIn] = useState(null)
@@ -14,11 +20,12 @@ export default function ProfileComponent() {
     const [oldPassword, setOldPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
 
-    const [selectedColor, setSelectedColor] = useState();
+    const [selectedColor, setSelectedColor] = useState(getCurrentColourName());
 
     const handleColorChange = (color) => {
         setSelectedColor(color);
         setCurrentColour(AvailableColours[color])
+        setCurrentColourName(color)
     }
 
 
@@ -89,6 +96,11 @@ export default function ProfileComponent() {
                 </Link>Your Profile</h1>
                 <Link to="/home" className="mininav_item"> &lt;- Go Home</Link>
                 <h2>Username: {userData.username}</h2>
+                <select value={selectedColor} onChange={(e)=>handleColorChange(e.target.value)} className="button">
+                    {Object.keys(AvailableColours).map((color)=>(
+                        <option key={color} value={color}>Color: {color}</option>
+                    ))}
+                </select>
                     <form action={()=>updatePasswdWrapper()}  className="update_password">
                         <p>Change Password</p>
                         <label>Current Password</label>
@@ -99,11 +111,6 @@ export default function ProfileComponent() {
                     </form>
                 <input type="button" value="Logout" onClick={()=>logoutWrapper()} className="button"/>
                 <input type="button" value="Delete Account" onClick={()=>deleteWrapper()} className="button"/>
-                <select value={selectedColor} onChange={(e)=>handleColorChange(e.target.value)}>
-                    {Object.keys(AvailableColours).map((color)=>(
-                        <option key={color}>{color}</option>
-                    ))}
-                </select>
             </div>
         )
     } else {

@@ -6,13 +6,13 @@ export let CurrentColours= {
 }
 
 export const AvailableColours = Object.freeze({
-    Black: {
+    White: {
         primary: "#000000",
         secondary: "#FFFFFF",
         text: "#FFFFFF",
         highlight: "#1E90FFFF"
     },
-    White: {
+    Black: {
         primary: "#FFFFFF",
         secondary: "#000000",
         text: "#000000",
@@ -38,19 +38,19 @@ export const AvailableColours = Object.freeze({
     },
     Yellow: {
         primary: "#FFFF00",
-        secondary: "#B8860BFF",
+        secondary: "#ffab03",
         text: "#000000",
         highlight: "#B22222FF"
     },
     Pink: {
         primary: "#FF1493FF",
-        secondary: "#EE82EEFF", //According to IntelliJ IDEA this is violet for some reason
+        secondary: "#e382ee", //According to IntelliJ IDEA this is violet for some reason
         text: "#FFFFFF",
         highlight: "#FFD700FF"
     },
     Violet: {
         primary: "#8B008BFF",
-        secondary: "#C71585FF",
+        secondary: "#ff009f",
         text: "#FFFFFF",
         highlight: "#1E90FFFF"
     },
@@ -62,7 +62,7 @@ export const AvailableColours = Object.freeze({
     },
     Turquoise: {
         primary: "#00CED1FF",
-        secondary: "#40E0D0FF",
+        secondary: "#059587",
         text: "#000000",
         highlight: "#FF4500FF"
     }
@@ -82,7 +82,13 @@ export function getCurrentColour() {
     );
 }
 
-// TODO: Colour stuff
+export function getCurrentColourName() {
+    return localStorage.getItem("colourName") ? localStorage.getItem("colourName") : "Black"
+}
+
+export function setCurrentColourName(name) {
+    localStorage.setItem("colourName", name);
+}
 
 export function updateColors(color) {
     const root = document.documentElement;
