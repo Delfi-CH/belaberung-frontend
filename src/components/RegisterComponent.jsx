@@ -1,8 +1,10 @@
+import "../style/global.css"
 import {useEffect, useState} from "react";
 import {checkStatus, register} from "../lib.js";
 import {Link, Navigate} from "react-router";
 import message_icon from "../assets/extern/feathericons/message.svg";
 import "../style/auth.css"
+import {CurrentColours, updateColors} from "../style/colors.js";
 
 export default function RegisterComponent() {
 
@@ -23,6 +25,7 @@ export default function RegisterComponent() {
     const [isLoggedIn, setIsLoggedIn] = useState(null)
 
     useEffect(() => {
+        updateColors(CurrentColours)
         let mounted = true
 
         checkStatus().then((status) => {
@@ -44,7 +47,7 @@ export default function RegisterComponent() {
         <div className="auth">
             <h1>
                 <Link to="/home">
-                    <img src={message_icon} alt="Message Bubble" width={48}/>
+                    <img src={message_icon} alt="Message Bubble" width={48} className="icon"/>
                 </Link>
                 Register
             </h1>

@@ -1,5 +1,5 @@
 .update_password  {
-    border: 5px solid black;
+    border: 5px solid var(--primary-color);
     border-radius: 1em;
     display: flex;
     flex-direction: column;
@@ -7,8 +7,8 @@
     gap: 0.5em;
     margin: 1em;
     padding: 0.5rem;
-    background: black;
-    color: white;
+    background: var(--primary-color);
+    color: var(--text-color);
 }
 
 .update_password p {
@@ -19,37 +19,37 @@
 }
 .update_password_text {
     all: unset;
-    border: 3px solid white;
+    border: 3px solid var(--secondary-color);
     min-height: 2em;
 
 }
 
 .update_password_text:focus {
-    border: 3px solid dodgerblue;
+    border: 3px solid var(--highlight-color);
     outline: none;
 }
 
 .button_form {
     all:unset;
-    border: 5px solid white;
+    border: 5px solid var(--secondary-color);
     border-radius: 1em;
     max-width: 55%;
     cursor: pointer;
     margin-left: 22.5%;
     padding: 0.3rem;
-    background: white;
-    color: black;
+    background: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .button {
     all:unset;
-    border: 5px solid black;
+    border: 5px solid var(--primary-color);
     border-radius: 1em;
     width: 50%;
     cursor: pointer;
     padding: 0.3rem;
-    background: black;
-    color: white;
+    background: var(--primary-color);
+    color: var(--text-color);
     text-align: center;
     margin-left: 25%;
     margin-bottom: 1em;
@@ -64,13 +64,13 @@
 .mininav_item {
     all: unset;
     align-self: flex-end;
-    border: 5px solid black;
+    border: 5px solid var(--primary-color);
     border-radius: 1em;
     padding-left: 1em;
     padding-right: 1em;
     cursor: pointer;
-    color: white;
-    background: black;
+    color: var(--text-color);
+    background: var(--primary-color);
 }
 
 .profile {

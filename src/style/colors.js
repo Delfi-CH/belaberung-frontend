@@ -19,7 +19,7 @@ export const AvailableColours = Object.freeze({
         highlight: "#1E90FFFF"
     },
     Red: {
-        primary: "#B22222FF",
+        primary: "#000000",
         secondary: "#B22222FF",
         text: "#FFFFFF",
         highlight: "#FFFF00",
@@ -68,18 +68,38 @@ export const AvailableColours = Object.freeze({
     }
 })
 
-export function setCurrentColour(colour) {
-    localStorage.setItem("colour", colour);
+export function saveCurrentColour(colour) {
+    localStorage.setItem("colour", Object.entries(colour));
 }
 
 export function getCurrentColour() {
-    return localStorage.getItem("colour");
+    const local = localStorage.getItem("colour") ? localStorage.getItem("colour") : "primary,#000000,secondary,#FFFFFF,text,#FFFFFF,highlight,#1E90FFFF";
+    return Object.fromEntries(
+        local.split(',').reduce((acc, curr, i, arr) => {
+            if (i % 2 === 0) acc.push([curr, arr[i + 1]]);
+            return acc;
+        }, [])
+    );
 }
 
 // TODO: Colour stuff
 
-function getColors() {
-    console.log(Object.keys(AvailableColours))
+export function updateColors(color) {
+    const root = document.documentElement;
+    root.style.setProperty("--primary-color", color.primary);
+    root.style.setProperty("--secondary-color", color.secondary);
+    root.style.setProperty("--text-color", color.text);
+    root.style.setProperty("--highlight-color", color.highlight);
 }
 
-getColors()
+export function setCurrentColour(color) {
+    CurrentColours = color;
+    saveCurrentColour(CurrentColours);
+    updateColors(CurrentColours)
+}
+
+export function initColours() {
+    const savedColour = getCurrentColour() ? getCurrentColour() : AvailableColours.Black;
+    setCurrentColour(savedColour)
+
+}

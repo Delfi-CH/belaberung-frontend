@@ -1,8 +1,11 @@
+import "../style/global.css"
 import {useEffect, useState} from "react";
 import {checkStatus, fetchRooms, getUserByName, getUsername, logout} from "../lib.js";
 import {Link, Navigate} from "react-router";
 import message_icon from "../assets/extern/feathericons/message.svg";
 import "../style/home.css"
+
+import {updateColors, AvailableColours, CurrentColours} from "../style/colors.js";
 
 export default function HomeComponent() {
 
@@ -44,6 +47,8 @@ export default function HomeComponent() {
             }
             fetchRoomData()
         }
+        updateColors(CurrentColours
+        )
     }, [isLoggedIn])
 
 
@@ -54,7 +59,7 @@ export default function HomeComponent() {
             <>
                 <h1>
                     <Link to="/home">
-                        <img src={message_icon} alt="Message Bubble" width={48}/>
+                        <img src={message_icon} alt="Message Bubble" width={48} className="icon"/>
                     </Link>
                     Home
                 </h1>

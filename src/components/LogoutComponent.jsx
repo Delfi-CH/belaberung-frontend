@@ -1,3 +1,4 @@
+import "../style/global.css"
 import {useEffect} from "react";
 import {logout} from "../lib.js";
 import {Navigate} from "react-router";

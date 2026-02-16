@@ -1,14 +1,18 @@
+import "../style/global.css"
 import {useEffect, useState} from "react";
 import {checkStatus, createRoom} from "../lib.js";
 import "../style/create.css"
 import message_icon from "../assets/extern/feathericons/message.svg";
 import {Link, redirect} from "react-router";
 
+import {updateColors, AvailableColours, CurrentColours} from "../style/colors.js";
+
 export default function CreateRoomComponent() {
     const [isLoggedIn, setIsLoggedIn] = useState(null)
 
     const [roomName, setRoomName] = useState("")
     useEffect(() => {
+        updateColors(CurrentColours)
         let mounted = true
 
         checkStatus().then((status) => {
@@ -32,7 +36,7 @@ export default function CreateRoomComponent() {
             <div className="create">
                 <h1>
                     <Link to="/home">
-                        <img src={message_icon} alt="Message Bubble" width={48}/>
+                        <img src={message_icon} alt="Message Bubble" width={48} className="icon"/>
                     </Link>
                     Create Room
                 </h1>

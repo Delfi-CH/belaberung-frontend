@@ -1,9 +1,11 @@
+import "../style/global.css"
 import {checkStatus, deleteUser, getUserByName, getUsername, logout, updatePassword} from "../lib.js";
 import {useEffect, useState} from "react";
 import {Link, Navigate} from "react-router";
 import WaitingComponent from "./WaitingComponent.jsx";
 import message_icon from "../assets/extern/feathericons/message.svg";
 import "../style/profile.css"
+import {AvailableColours, CurrentColours, setCurrentColour, updateColors} from "../style/colors.js";
 
 export default function ProfileComponent() {
     const [isLoggedIn, setIsLoggedIn] = useState(null)
@@ -11,6 +13,14 @@ export default function ProfileComponent() {
 
     const [oldPassword, setOldPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
+
+    const [selectedColor, setSelectedColor] = useState();
+
+    const handleColorChange = (color) => {
+        setSelectedColor(color);
+        setCurrentColour(AvailableColours[color])
+    }
+
 
     useEffect(() => {
         let mounted = true
@@ -40,6 +50,7 @@ export default function ProfileComponent() {
                 fetchUser()
             }
         }
+        updateColors(CurrentColours)
     }, [isLoggedIn])
 
     const deleteWrapper = () => {
@@ -71,11 +82,10 @@ export default function ProfileComponent() {
     if (!userData) return (<WaitingComponent/>)
 
     if (isLoggedIn) {
-        console.log(userData)
         return (
             <div className="profile">
                 <h1><Link to="/home">
-                    <img src={message_icon} alt="Message Bubble" width={48}/>
+                    <img src={message_icon} alt="Message Bubble" width={48} className="icon"/>
                 </Link>Your Profile</h1>
                 <Link to="/home" className="mininav_item"> &lt;- Go Home</Link>
                 <h2>Username: {userData.username}</h2>
@@ -89,6 +99,11 @@ export default function ProfileComponent() {
                     </form>
                 <input type="button" value="Logout" onClick={()=>logoutWrapper()} className="button"/>
                 <input type="button" value="Delete Account" onClick={()=>deleteWrapper()} className="button"/>
+                <select value={selectedColor} onChange={(e)=>handleColorChange(e.target.value)}>
+                    {Object.keys(AvailableColours).map((color)=>(
+                        <option key={color}>{color}</option>
+                    ))}
+                </select>
             </div>
         )
     } else {

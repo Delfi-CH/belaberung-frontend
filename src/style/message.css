@@ -21,20 +21,21 @@
     margin-left: 1em;
 }
 .user_profile {
-    border: 5px solid black;
+    border: 5px solid var(--primary-color);
     border-bottom-right-radius: 1rem;
     padding: 0.2rem;
-    color: white;
-    background: black;
+    color: var(--text-color);
+    background: var(--primary-color);
     width: fit-content;
 }
 
 .main {
-    border: 5px solid black;
+    border: 5px solid var(--primary-color);
     border-radius: 1em;
     margin: 0.5em;
     width: fit-content;
     padding-right: 1em;
+    color: var(--primary-color);
 }
 @media (min-width: 599px) {
     .timestamp_desktop {

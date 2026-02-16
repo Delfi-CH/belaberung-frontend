@@ -4,14 +4,22 @@
     max-height: 100vh;
 }
 
+h1 {
+    background: var(--primary-color);
+    color: var(--text-color);
+    border: 5px solid var(--secondary-color);
+    border-radius: 1em;
+}
+
 .users {
     flex: 1;
     height: 10%;
     overflow: scroll;
-    border: 5px solid black;
+    border: 5px solid var(--primary-color);
     border-radius: 1em;
     margin: 1em;
     max-height: 10vh;
+    color: var(--primary-color);
 }
 
 .message_core {
@@ -25,7 +33,7 @@
     max-height: 80%;
     overflow-y: auto;
     overflow-x: visible;
-    border: 5px solid black;
+    border: 5px solid var(--primary-color);
     border-radius: 1em;
     margin: 1em;
     padding: 1em;
@@ -36,6 +44,7 @@
 
 }
 .header {
+    color: var(--text-color);
     text-align: right;
     margin: 1em;
 }
@@ -50,20 +59,24 @@
     max-height: 8vh;
 }
 .send_message_text {
-    border: 3px solid black;
+    border: 3px solid var(--primary-color);
     width: 85%;
     max-height: 7.7vh;
     border-right: none;
     font-size: 200%;
+    background: var(--secondary-color);
 }
 .send_message_text:focus {
-    border: 3px solid blue;
+    border: 3px solid var(--highlight-color);
     outline: none;
 }
 .send_message_button {
-    all: unset;
+    margin: 0;
+    padding: 0;
+    background: none;
+    font: inherit;
     width: 7.4vh;
-    border: 3px solid black;
+    border: 3px solid var(--primary-color);
     background: gray;
     height: 7.4vh;
     cursor: pointer;
@@ -84,18 +97,21 @@
     width: 100%;
     justify-content: flex-end;
     gap: 1em;
+    color: var(--text-color);
 }
 .mininav_item {
     flex: 1;
-    all: unset;
+    margin: 0;
+    background: none;
+    font: inherit;
     align-self: flex-end;
-    border: 5px solid black;
+    border: 5px solid var(--secondary-color);
     border-radius: 1em;
     padding-left: 1em;
     padding-right: 1em;
     cursor: pointer;
-    color: white;
-    background: black;
+    color: var(--text-color);
+    background: var(--primary-color);
 }
 .mininav_item:hover {
     background: gray;
@@ -142,5 +158,7 @@
 }
 
 @media print {
-    display: none;
+    :root {
+        display: none;
+    }
 }

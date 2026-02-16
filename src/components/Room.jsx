@@ -1,3 +1,4 @@
+import "../style/global.css"
 import {useEffect, useState} from "react";
 import {addUserToRoom, checkStatus, getMessages, getRoomByID, getUsername, sendMessage} from "../lib.js";
 import {Navigate, Link} from "react-router";
@@ -6,6 +7,8 @@ import WaitingComponent from "./WaitingComponent.jsx";
 import "../style/room.css"
 import send_icon from "../assets/send.svg"
 import message_icon from "../assets/extern/feathericons/message.svg"
+
+import {updateColors, AvailableColours, CurrentColours} from "../style/colors.js";
 
 export default function Room({roomId}) {
 
@@ -47,6 +50,7 @@ export default function Room({roomId}) {
             }, 1000)
             return () => clearInterval(interval)
         }
+        updateColors(CurrentColours);
     }, [isLoggedIn, roomId])
 
     function sendMessageWrapper(content, id) {
@@ -71,7 +75,7 @@ export default function Room({roomId}) {
                 <div className="header">
                     <h1>
                         <Link to="/home">
-                            <img src={message_icon} alt="Message Bubble" width={48}/>
+                            <img src={message_icon} alt="Message Bubble" width={48} className="icon"/>
                         </Link>
                         {roomData.name}
                     </h1>

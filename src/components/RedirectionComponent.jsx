@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router";
 import { checkStatus } from "../lib.js";
+import "../style/global.css"
+
 
 export default function RedirectionComponent() {
     const [isLoggedIn, setIsLoggedIn] = useState(null)

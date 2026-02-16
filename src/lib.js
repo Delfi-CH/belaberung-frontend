@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 //Config
-export let backendURL = ""
+export let backendURL = "http://localhost:8080"
 
 export function setBackendURL(newUrl) {
     backendURL = newUrl

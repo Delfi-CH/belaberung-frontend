@@ -7,6 +7,9 @@ import HomeComponent from "./components/HomeComponent.jsx";
 import CreateRoomComponent from "./components/CreateRoomComponent.jsx";
 import ProfileComponent from "./components/ProfileComponent.jsx";
 import LogoutComponent from "./components/LogoutComponent.jsx";
+import "./style/global.css"
+import {initColours} from "./style/colors.js";
+
 
 function App() {
 
@@ -38,6 +41,8 @@ function App() {
     function LogoutPage() {
         return(<LogoutComponent/>)
     }
+
+    initColours();
 
   return (
     <>

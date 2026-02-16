@@ -1,0 +1,16 @@
+:root {
+    --primary-color: #000000;
+    --secondary-color: #FFFFFF;
+    --text-color: #FFFFFF;
+    --highlight-color: #1E90FF;
+    background: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.icon {
+    background: white;
+    border: 3px solid white;
+    border-radius: 1em;
+    margin: 5px;
+    padding: 5px;
+}

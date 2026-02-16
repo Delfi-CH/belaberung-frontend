@@ -1,6 +1,8 @@
+import "../style/global.css"
 import {getUsername} from "../lib.js";
 import {format} from "date-fns";
 import "../style/message.css"
+import {CurrentColours, updateColors} from "../style/colors.js";
 
 export default function DisplayMessage({username,timestamp,content}) {
     const yourUsername = getUsername()
@@ -9,6 +11,7 @@ export default function DisplayMessage({username,timestamp,content}) {
     if (yourUsername === username) {
         usernameAddon = " (you)"
     }
+    updateColors(CurrentColours)
 
     return(
         <div className="main">
