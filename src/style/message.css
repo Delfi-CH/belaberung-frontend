@@ -20,6 +20,12 @@
 .content {
     margin-left: 1em;
 }
+
+.content_img {
+    margin: 1em;
+    border-radius: 1rem;
+}
+
 .user_profile {
     border: 5px solid var(--primary-color);
     border-bottom-right-radius: 1rem;
