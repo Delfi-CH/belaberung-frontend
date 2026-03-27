@@ -1,4 +1,5 @@
 import axios from "axios";
+import { EventSourcePolyfill } from 'event-source-polyfill';
 
 
 //Config
@@ -211,6 +212,31 @@ export async function getMessages(id) {
     } catch {
         return null
     }
+}
+
+export function subscribeToMessages(roomId, onMessage) {
+    const token = getToken();
+
+    const es = new EventSourcePolyfill(
+        `${backendURL}/api/chat/rooms/stream/${roomId}/messages`,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+
+    es.onmessage = (event) => {
+        const msg = JSON.parse(event.data);
+        onMessage(msg);
+    };
+
+    es.onerror = (err) => {
+        console.error("SSE error", err);
+        es.close();
+    };
+
+    return es;
 }
 
 export async function deleteUser(id) {

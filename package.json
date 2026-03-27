@@ -1,7 +1,7 @@
 {
   "name": "chatapp-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^1.13.2",
     "date-fns": "^4.1.0",
+    "event-source-polyfill": "^1.0.31",
     "is-url-http": "^2.3.13",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

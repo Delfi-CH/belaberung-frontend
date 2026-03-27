@@ -1,13 +1,12 @@
 import "../style/global.css"
 import {useEffect, useState} from "react";
-import {addUserToRoom, checkStatus, getMessages, getRoomByID, getUsername, sendMessage} from "../lib.js";
+import {addUserToRoom, checkStatus, getMessages, getRoomByID, getUsername, sendMessage, subscribeToMessages} from "../lib.js";
 import {Navigate, Link} from "react-router";
 import DisplayMessage from "./DisplayMessage.jsx";
 import WaitingComponent from "./WaitingComponent.jsx";
 import "../style/room.css"
 import send_icon from "../assets/send.svg"
 import message_icon from "../assets/extern/feathericons/message.svg"
-
 import {updateColors, AvailableColours, CurrentColours} from "../style/colors.js";
 
 export default function Room({roomId}) {
@@ -32,26 +31,28 @@ export default function Room({roomId}) {
     }, [])
 
     useEffect(() => {
-        if (isLoggedIn) {
-            const interval = setInterval(async () => {
-                async function fetchRoom() {
-                    const room = await getRoomByID(roomId)
-                    setRoomData(room)
-                }
+        if (!isLoggedIn) return;
 
-                await fetchRoom()
+        let eventSource;
+        updateColors(CurrentColours)
 
-                async function fetchMSG() {
-                    const messages = await getMessages(roomId)
-                    setMessageData(messages)
-                }
+        getRoomByID(roomId).then(setRoomData);
+        getMessages(roomId).then((data) => {
+            if (data) setMessageData(data);
+        });
+        eventSource = subscribeToMessages(roomId, (newMessage) => {
+            setMessageData((prev) => [...prev, newMessage]);
+        });
 
-                await fetchMSG()
-            }, 1000)
-            return () => clearInterval(interval)
-        }
-        updateColors(CurrentColours);
-    }, [isLoggedIn, roomId])
+        return () => {
+            if (eventSource) eventSource.close();
+        };
+    }, [isLoggedIn, roomId]);
+
+    useEffect(() => {
+        const el = document.querySelector(".messages");
+        if (el) el.scrollTop = el.scrollHeight;
+    }, [messageData]);
 
     function sendMessageWrapper(content, id) {
         if (content === "") {
